@@ -74,10 +74,11 @@ NSString * const FVSDisableCheckbox      = @"FVSDisableCheckbox";
     
     // Establish the startup mode
     // Are we root? If so, exit if the root vol already encrypted.
-    // Also, hide the menu bar.
-    // Is this a forced setup? If so, disable the do not ask again checkbox.
+    //   Also, hide the menu bar.
+    // Is this a forced setup? If so, disable the Do not ask again checkbox,
+    //   Quit menu item, and Do not enable button.
     // If not, respect that the user has
-    // opted out, and simply exit.
+    //   opted out, and simply exit.
     uid_t realuid = getuid();
     if (realuid == 0) {
         if ([FVSAppDelegate rootVolumeIsEncrypted]) {
