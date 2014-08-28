@@ -18,13 +18,13 @@ When run as a loginhook, there are two "modes":
 
 1. Optional
   
-  In optional activation mode, the user is presented with the opportunity to enable FileVault, or opt out.
+  In Optional mode, the user is presented with the opportunity to enable FileVault, or opt out.
 
 2. Enforced
 
-  In enforced mode, the user must activate FileVault to proceed with login.
+  In Enforced mode, the user must activate FileVault to proceed with login.
   
-The default mode is optional, but if you wish enforce FileVault activation, you may do so using MCX policy or by overriding the defaults from the command line (see below).
+The default mode is Optional, but if you wish to enforce FileVault activation, you may do so using MCX policy or by overriding the defaults from the command line (see below).
 
 ##Build/Download
 
@@ -32,7 +32,7 @@ Use Mac OS X 10.8 and Xcode (4.6 recommended) to build the app.
 
 You can also download the pre-compiled app here...
 
-[DOWNLOAD](http://dl.bintray.com/content/dayglojesus/github/filevaultsetup-1.0.3.dmg?direct)
+[DOWNLOAD v1.0.4](https://drive.google.com/file/d/0BxeyUOU7KKOnbW54VE82TkJyT0k/edit?usp=sharing)
 
 ##Installation
 
@@ -52,7 +52,7 @@ Alternatively, you can create a custom launch/wrapper script that calls the app.
 
 Preferences are stored in the domain: ca.sfu.its.filevaultsetup
 
-FileVault Setup accepts four defaults:
+FileVault Setup accepts five defaults:
 
 1. FVSDoNotAskForSetup:   suppresses prompting the user to enable FileVault, default is NO/FALSE
 
@@ -61,6 +61,8 @@ FileVault Setup accepts four defaults:
 3. FVSUseKeychain:        enforces the use of the FileVaultMaster.keychain, default is YES/TRUE
 
 4. FVSCreateRecoveryKey:  enforces the creation of a Personal Recovery Key, default is YES/TRUE
+
+5. FVSDisableCheckbox:    prevents user from suppressing the prompt, default is NO/FALSE
 
 Note: if you want to change the behaviour of the app without using MCX or defaults, you can pass FileVault Setup an argument like this...
 
