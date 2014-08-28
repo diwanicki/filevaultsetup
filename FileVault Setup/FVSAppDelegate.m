@@ -57,7 +57,7 @@ NSString * const FVSDisableCheckbox      = @"FVSDisableCheckbox";
     NSMutableDictionary *defaultValues = [NSMutableDictionary dictionary];
     [defaultValues setObject:[NSNumber numberWithBool:NO]
                       forKey:FVSDoNotAskForSetup];
-    [defaultValues setObject:[NSNumber numberWithBool:YES]
+    [defaultValues setObject:[NSNumber numberWithBool:NO]
                       forKey:FVSForceSetup];
     [defaultValues setObject:[NSNumber numberWithBool:YES]
                       forKey:FVSUseKeychain];
