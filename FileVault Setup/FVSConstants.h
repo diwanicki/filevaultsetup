@@ -3,6 +3,7 @@
 //  FileVault Setup
 //
 //  Created by Brian Warsing on 2013-03-11.
+//  Modified by David Iwanicki on 2014-08-27
 
 /*
  * Copyright (c) 2013 Simon Fraser Universty. All rights reserved.
@@ -28,5 +29,6 @@ extern NSString * const FVSUseKeychain;
 extern NSString * const FVSCreateRecoveryKey;
 extern NSString * const FVSUsername;
 extern NSString * const FVSUid;
+extern NSString * const FVSDisableCheckbox;
 
 #endif

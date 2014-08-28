@@ -3,6 +3,7 @@
 //  FileVault Setup
 //
 //  Created by Brian Warsing on 2013-03-05.
+//  Modified by David Iwanicki on 2014-08-27
 
 /*
  * Copyright (c) 2013 Simon Fraser Universty. All rights reserved.
@@ -30,6 +31,7 @@ NSString * const FVSUseKeychain          = @"FVSUseKeychain";
 NSString * const FVSCreateRecoveryKey    = @"FVSCreateRecoveryKey";
 NSString * const FVSUsername             = @"FVSUsername";
 NSString * const FVSUid                  = @"FVSUid";
+NSString * const FVSDisableCheckbox      = @"FVSDisableCheckbox";
 
 @implementation FVSAppDelegate
 
@@ -55,7 +57,7 @@ NSString * const FVSUid                  = @"FVSUid";
     NSMutableDictionary *defaultValues = [NSMutableDictionary dictionary];
     [defaultValues setObject:[NSNumber numberWithBool:NO]
                       forKey:FVSDoNotAskForSetup];
-    [defaultValues setObject:[NSNumber numberWithBool:NO]
+    [defaultValues setObject:[NSNumber numberWithBool:YES]
                       forKey:FVSForceSetup];
     [defaultValues setObject:[NSNumber numberWithBool:YES]
                       forKey:FVSUseKeychain];
@@ -65,13 +67,16 @@ NSString * const FVSUid                  = @"FVSUid";
                       forKey:FVSUsername];
     [defaultValues setObject:[NSNumber numberWithInt:uid]
                       forKey:FVSUid];
+    [defaultValues setObject:[NSNumber numberWithBool:NO]
+                      forKey:FVSDisableCheckbox];
     
     [[NSUserDefaults standardUserDefaults] registerDefaults:defaultValues];
     
     // Establish the startup mode
     // Are we root? If so, exit if the root vol already encrypted.
     // Also, hide the menu bar.
-    // Is this a forced setup? If not, respect that the user has
+    // Is this a forced setup? If so, disable the do not ask again checkbox.
+    // If not, respect that the user has
     // opted out, and simply exit.
     uid_t realuid = getuid();
     if (realuid == 0) {
@@ -79,6 +84,7 @@ NSString * const FVSUid                  = @"FVSUid";
             exit(0);
         }
         [NSMenu setMenuBarVisible:NO];
+        
         if (![[[NSUserDefaults standardUserDefaults]
               valueForKeyPath:FVSForceSetup] boolValue]) {
             if ([[[NSUserDefaults standardUserDefaults]
